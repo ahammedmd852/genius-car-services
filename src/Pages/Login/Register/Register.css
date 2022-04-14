@@ -1,0 +1,26 @@
+.register-form {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.form-title {
+    text-align: center;
+    color: rgb(93, 148, 250);
+    margin-top: 5px;
+}
+
+.register-form input {
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    font-size: 20px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.register-btn {
+    background-color: rgb(88, 143, 244);
+    font-weight: semi-bold;
+}
