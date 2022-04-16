@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
@@ -6,6 +6,9 @@ import './Register.css';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
+
+    const [agree, setAgree] = useState(false);
+
     const [
         createUserWithEmailAndPassword,
         user,
@@ -28,7 +31,9 @@ const Register = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        createUserWithEmailAndPassword(email, password);
+        if (agree) {
+            createUserWithEmailAndPassword(email, password);
+        }
     }
 
     return (
@@ -38,9 +43,9 @@ const Register = () => {
                 <input type="text" name="name" id="" placeholder='Your Name' />
                 <input type="email" name="email" id="" placeholder='Your Email Address' required />
                 <input type="password" name="password" id="" placeholder='Your Password' required />
-                <input type="checkbox" name="terms" id="terms" />
-                <label className='text-primary' htmlFor="terms">Accept Terms and Condition of Genius Car Service</label>
-                <input type="submit" className='register-btn text-white w-25 mt-2' value="Register" />
+                <input onClick={() => setAgree(!agree)} type="checkbox" name="terms" id="terms" />
+                <label className={`ps-2 ${agree ? '' : 'text-danger'}`} htmlFor="terms">Accept Terms and Condition of Genius Car Service</label>
+                <input disabled={!agree} type="submit" className='register-btn text-white w-25 mt-2' value="Register" />
             </form>
             <p className='mt-2'>Already have an Account? <Link to="/login" onClick={navigateLogin} className='text-primary text-decoration-none pe-auto'>Please Login</Link></p>
             <SocialLogin></SocialLogin>
