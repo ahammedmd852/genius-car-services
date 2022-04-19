@@ -7,6 +7,7 @@ import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import TitlePage from '../../Shared/TitlePage/TitlePage';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -63,6 +64,7 @@ const Login = () => {
 
     return (
         <div className='container w-50 mx-auto'>
+            <TitlePage title="Login"></TitlePage>
             <h1 className='text-primary text-center mt-2'>Please log In</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
