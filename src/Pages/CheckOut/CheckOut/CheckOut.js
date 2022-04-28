@@ -1,5 +1,7 @@
+import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import useServiceDetails from '../../../hooks/useServiceDetails';
 
@@ -31,6 +33,14 @@ const CheckOut = () => {
             address: event.target.address.value,
             phone: event.target.phone.value,
         };
+        axios.post('http://localhost:5000/order', order)
+            .then(res => {
+                const { data } = res;
+                if (data.insertedId) {
+                    toast("Your order is booked!!");
+                    event.target.reset();
+                }
+            })
     };
 
     return (
@@ -41,7 +51,7 @@ const CheckOut = () => {
                 <br />
                 <input className='w-100 mb-2' type="text" value={user.email} name="email" placeholder='Your email' required readOnly disabled />
                 <br />
-                <input className='w-100 mb-2' type="text" value={service.name} name="service" placeholder='Your service' required />
+                <input className='w-100 mb-2' type="text" value={service.name} name="service" placeholder='Your service' required readOnly />
                 <br />
                 <input className='w-100 mb-2' type="text" name="address" placeholder='Your address' autoComplete='off' required />
                 <br />

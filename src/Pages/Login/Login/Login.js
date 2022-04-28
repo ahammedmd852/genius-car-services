@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import TitlePage from '../../Shared/TitlePage/TitlePage';
 
@@ -82,7 +82,6 @@ const Login = () => {
             <p className='mt-2'>New to Genius Car? <Link to="/register" onClick={navigateRegister} className='text-primary text-decoration-none pe-auto'>Please Register</Link></p>
             <p className='mt-2'>Forget Password? <button onClick={forgetPassword} className='btn btn-link text-primary text-decoration-none pe-auto'>Reset Password</button></p>
             <SocialLogin></SocialLogin>
-            <ToastContainer />
         </div>
     );
 };
